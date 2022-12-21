@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 
 import usersRouter from './routes/users.routes.js';
 import urlsRouter from './routes/urls.routes.js';
+import rankingRouter from './routes/ranking.route.js';
 
 dotenv.config();
 const app = express();
@@ -12,6 +13,7 @@ app.use(cors());
 
 app.use(usersRouter);
 app.use(urlsRouter);
+app.use(rankingRouter);
 
 PORT = process.env.PORT || 5000;
 
