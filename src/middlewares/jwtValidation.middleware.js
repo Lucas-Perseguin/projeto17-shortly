@@ -33,11 +33,11 @@ export default async function jwtValidation(req, res, next) {
       decoded.id,
     ]);
 
-    if (!user.rowCount || !user.rows.id) {
+    if (!user.rowCount || !user.rows[0].id) {
       return res.status(401).send({ message: 'Invalid token!' });
     }
 
-    res.locals.userId = user.rows.id;
+    res.locals.userId = user.rows[0].id;
 
     return next();
   });

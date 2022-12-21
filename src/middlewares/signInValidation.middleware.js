@@ -17,7 +17,7 @@ export default async function signInValidation(req, res, next) {
       return res.sendStatus(401);
     }
 
-    res.locals.user = userFound.rows;
+    res.locals.user = userFound.rows[0];
 
     next();
   } catch (error) {

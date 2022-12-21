@@ -9,7 +9,7 @@ export default async function checkShortenedUrlExistence(req, res, next) {
       [id]
     );
     if (!urlFound.rowCount) return res.sendStatus(404);
-    res.locals.url = urlFound.rows;
+    res.locals.url = urlFound.rows[0];
     next();
   } catch (err) {
     res.sendStatus(500);

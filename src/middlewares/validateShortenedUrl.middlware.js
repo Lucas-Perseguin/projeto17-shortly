@@ -8,7 +8,7 @@ export default async function validateShortenedUrl(req, res, next) {
       [shortUrl]
     );
     if (!urlFound.rowCount) return res.sendStatus(404);
-    res.locals.urlObj = urlFound.rows;
+    res.locals.urlObj = urlFound.rows[0];
     next();
   } catch (err) {
     res.sendStatus(500);
