@@ -25,15 +25,13 @@ export default async function jwtValidation(req, res, next) {
 
   jwt.verify(token, process.env.SECRET_JWT, async (err, decoded) => {
     if (err) {
-      console.error(err);
       return res.status(401).send({ message: 'Invalid token!' });
     }
 
     const user = await connection.query('SELECT * FROM users WHERE id = $1;', [
       decoded.id,
     ]);
-
-    if (!user.rowCount || !user.rows[0].id) {
+    if (!user.rowCount) {
       return res.status(401).send({ message: 'Invalid token!' });
     }
 
