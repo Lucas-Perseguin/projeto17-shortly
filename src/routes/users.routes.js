@@ -3,8 +3,6 @@ import { Router } from 'express';
 import {
   postUserSignUp,
   postUserSignIn,
-  getIsToken,
-  getUserById,
 } from '../controllers/users.controller.js';
 import userModelValidation from '../middlewares/userModelValidation.middleware.js';
 import userSignUpEmailValidation from '../middlewares/userSignUpEmailValidation.middleware.js';
