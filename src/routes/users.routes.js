@@ -28,8 +28,4 @@ router.post(
   postUserSignIn
 );
 
-router.get('/user', jwtValidation, getUserById);
-
-router.get('/token', jwtValidation, getIsToken);
-
 export default router;

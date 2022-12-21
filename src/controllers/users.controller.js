@@ -12,7 +12,7 @@ export async function postUserSignUp(req, res) {
   }
   try {
     const hashPassword = bcrypt.hashSync(password, 12);
-    const createdUser = await connection.query(
+    await connection.query(
       'INSERT INTO users (name, email, password) VALUES ($1, $2, $3)',
       [name, email, hashPassword]
     );
