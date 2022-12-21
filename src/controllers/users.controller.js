@@ -13,7 +13,7 @@ export async function postUserSignUp(req, res) {
   try {
     const hashPassword = bcrypt.hashSync(password, 12);
     await connection.query(
-      'INSERT INTO users (name, email, password) VALUES ($1, $2, $3)',
+      'INSERT INTO users (name, email, password) VALUES ($1, $2, $3);',
       [name, email, hashPassword]
     );
     res.sendStatus(201);
@@ -28,7 +28,7 @@ export async function postUserSignIn(req, res) {
     const token = jwt.sign({ id: id }, process.env.SECRET_JWT, {
       expiresIn: 86400,
     });
-    res.status(201).send(token);
+    res.status(201).send({ token });
   } catch (err) {
     res.sendStatus(500);
   }

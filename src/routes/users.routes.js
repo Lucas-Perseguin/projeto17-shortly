@@ -10,7 +10,6 @@ import userModelValidation from '../middlewares/userModelValidation.middleware.j
 import userSignUpEmailValidation from '../middlewares/userSignUpEmailValidation.middleware.js';
 import signInModelValidation from '../middlewares/signInModelValidation.middleware.js';
 import signInValidation from '../middlewares/signInValidation.middleware.js';
-import jwtValidation from '../middlewares/jwtValidation.middleware.js';
 
 const router = Router();
 
