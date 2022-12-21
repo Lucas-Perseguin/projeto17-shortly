@@ -20,3 +20,16 @@ export async function postUrl(req, res) {
 export async function getUrlById(req, res) {
   return res.status(200).send(res.locals);
 }
+
+export async function accesShortenedUrl(req, res) {
+  const { urlObj } = res.locals;
+  try {
+    await connection.query(
+      'UPDATE urls SET "visitsCount" = "visitsCount" + 1 WHERE id = $1;',
+      [urlObj.id]
+    );
+    return res.redirect(`${urlObj.url}`);
+  } catch (err) {
+    res.sendStatus(500);
+  }
+}
