@@ -15,17 +15,12 @@ import jwtValidation from '../middlewares/jwtValidation.middleware.js';
 const router = Router();
 
 router.post(
-  '/sign-up',
+  '/signup',
   userModelValidation,
   userSignUpEmailValidation,
   postUserSignUp
 );
 
-router.post(
-  '/sign-in',
-  signInModelValidation,
-  signInValidation,
-  postUserSignIn
-);
+router.post('/signin', signInModelValidation, signInValidation, postUserSignIn);
 
 export default router;
