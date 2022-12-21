@@ -3,8 +3,10 @@ import connection from '../database';
 
 export async function postUrl(req, res) {
   const { url } = req.body;
+  const regexp = new RegExp('^https?://(.*)');
+  const match = regexp.test(url);
+  if (!match) return res.sendStatus(422);
   const { userId } = res.locals;
-  if (!url) return res.sendStatus(422);
   const shortUrl = nanoid();
   try {
     await connection.query(
