@@ -16,7 +16,7 @@ router.post('/urls/shorten', jwtValidation, postUrl);
 router.get('/urls/:id', checkShortenedUrlExistence, getUrlById);
 router.get('/urls/open/:shortUrl', validateShortenedUrl, accesShortenedUrl);
 router.delete(
-  'urls/:id',
+  '/urls/:id',
   jwtValidation,
   checkShortenedUrlExistence,
   validateUrlToDeleteBelonging,

@@ -5,7 +5,7 @@ export default async function checkShortenedUrlExistence(req, res, next) {
   if (!id) return res.sendStatus(422);
   try {
     const urlFound = await connection.query(
-      'SELECT id, url, "shortUrl" FROM urls WHERE id = $1;',
+      'SELECT * FROM urls WHERE id = $1;',
       [id]
     );
     if (!urlFound.rowCount) return res.sendStatus(404);
