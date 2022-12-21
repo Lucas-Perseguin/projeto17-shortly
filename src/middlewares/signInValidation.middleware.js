@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import connection from '../database';
+import connection from '../database.js';
 
 export default async function signInValidation(req, res, next) {
   const { email, password } = req.body;

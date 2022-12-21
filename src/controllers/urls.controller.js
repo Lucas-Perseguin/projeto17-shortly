@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import connection from '../database';
+import connection from '../database.js';
 
 export async function postUrl(req, res) {
   const { url } = req.body;
