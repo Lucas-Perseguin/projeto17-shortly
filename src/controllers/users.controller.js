@@ -41,7 +41,7 @@ export async function getUserById(req, res) {
       'SELECT users.id, users.name, SUM(urls."visitsCount") AS "visistsCount", (SELECT array_to_json(array_agg(u)) FROM (SELECT * FROM urls) u ) AS "shortenedUrls" FROM users JOIN urls ON users.id = urls."userId" WHERE users.id = $1 GROUP BY users.id;',
       [userId]
     );
-    res.send(userData.rows);
+    res.send(userData.rows[0]);
   } catch (err) {
     res.sendStatus(500);
   }
