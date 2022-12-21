@@ -17,7 +17,7 @@ export async function postUrl(req, res) {
   }
 }
 
-export async function getUrlById(req, res) {
+export function getUrlById(req, res) {
   return res.status(200).send(res.locals);
 }
 
