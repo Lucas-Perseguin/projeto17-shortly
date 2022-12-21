@@ -20,7 +20,7 @@ export async function postUrl(req, res) {
 }
 
 export function getUrlById(req, res) {
-  return res.status(200).send(res.locals);
+  return res.status(200).send(res.locals.url);
 }
 
 export async function accesShortenedUrl(req, res) {
