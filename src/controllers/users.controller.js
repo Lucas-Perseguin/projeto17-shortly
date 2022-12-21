@@ -38,7 +38,7 @@ export async function getUserById(req, res) {
   const { userId } = res.locals;
   try {
     const userData = await connection.query(
-      'SELECT users.id, users.name, SUM(urls."visitsCount") AS "visistsCount", (SELECT array_to_json(array_agg(u)) FROM (SELECT * FROM urls) u ) AS "shortenedUrls" FROM users JOIN urls ON users.id = urls."userId" WHERE users.id = $1 GROUP BY users.id;',
+      'SELECT users.id, users.name, SUM(urls."visitsCount") AS "visistsCount", (SELECT array_to_json(array_agg(u)) FROM (SELECT urls.id, urls.url, urls."shortUrl", urls."visitsCount" FROM urls WHERE urls."userId" = $1) u ) AS "shortenedUrls" FROM users JOIN urls ON urls."userId" = users.id WHERE users.id = $1 GROUP BY users.id;',
       [userId]
     );
     res.send(userData.rows[0]);
