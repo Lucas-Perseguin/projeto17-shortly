@@ -12,7 +12,7 @@ export default async function signInValidation(req, res, next) {
 
     if (
       !userFound.rowCount ||
-      !bcrypt.compareSync(password, userFound.rows.password)
+      !bcrypt.compareSync(password, userFound.rows[0].password)
     ) {
       return res.sendStatus(401);
     }
@@ -21,6 +21,7 @@ export default async function signInValidation(req, res, next) {
 
     next();
   } catch (error) {
+    console.log(error);
     return res.sendStatus(500);
   }
 }

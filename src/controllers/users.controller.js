@@ -28,7 +28,7 @@ export async function postUserSignIn(req, res) {
     const token = jwt.sign({ id: id }, process.env.SECRET_JWT, {
       expiresIn: 86400,
     });
-    res.status(201).send({ token });
+    res.status(200).send({ token });
   } catch (err) {
     res.sendStatus(500);
   }
