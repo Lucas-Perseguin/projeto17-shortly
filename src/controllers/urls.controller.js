@@ -16,3 +16,16 @@ export async function postUrl(req, res) {
     res.sendStatus(500);
   }
 }
+
+export async function getUrlById(req, res) {
+  const { id } = res.locals.url;
+  try {
+    await connection.query(
+      'UPDATE urls SET "visitsCount" = "visitsCount" + 1 WHERE id = $1;',
+      [id]
+    );
+    return res.status(200).send(res.locals);
+  } catch (err) {
+    res.sendStatus(500);
+  }
+}
